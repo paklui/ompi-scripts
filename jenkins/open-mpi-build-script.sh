@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # abort on error
 set -e
@@ -134,16 +134,23 @@ case ${PLATFORM_ID} in
 	CONFIGURE_ARGS="LDFLAGS=-Wl,-rpath,/usr/local/lib/gcc5 --with-wrapper-ldflags=-Wl,-rpath,/usr/local/lib/gcc5"
 	;;
 esac
-module purge
-module use /opt/arm/modulefiles/
-module load Generic-AArch64/RHEL/7/gcc/8.2.0
-module load Generic-AArch64/RHEL/7/gcc-8.2.0/armpl/19.2.0
+echo ===========
+env
+echo ===========
+
+#module purge
+#module use /opt/arm/modulefiles/
+#module load Generic-AArch64/RHEL/7/gcc/8.2.0
+#module load Generic-AArch64/RHEL/7/gcc-8.2.0/armpl/19.2.0
 export HPCX_HOME=/opt/hpcx-v2.4.0-gcc
 CONFIGURE_ARGS=""
-CONFIGURE_ARGS+="--with-hcoll=${HPCX_HOME}/hcoll"
-CONFIGURE_ARGS+="--with-ucx=${HPCX_HOME}/ucx"
-CONFIGURE_ARGS+="--with-platform=contrib/platform/mellanox/optimized"
-CONFIGURE_ARGS+="--with-slurm --with-pmi"
+CONFIGURE_ARGS+="--with-hcoll=${HPCX_HOME}/hcoll "
+CONFIGURE_ARGS+="--with-ucx=${HPCX_HOME}/ucx "
+CONFIGURE_ARGS+="--with-platform=contrib/platform/mellanox/optimized "
+CONFIGURE_ARGS+="--with-slurm --with-pmi "
+CONFIGURE_ARGS+="CC=/opt/arm/gcc-8.2.0_Generic-AArch64_RHEL-7_aarch64-linux/bin/gcc "
+CONFIGURE_ARGS+="CXX=/opt/arm/gcc-8.2.0_Generic-AArch64_RHEL-7_aarch64-linux/bin/g++ "
+CONFIGURE_ARGS+="FC=/opt/arm/gcc-8.2.0_Generic-AArch64_RHEL-7_aarch64-linux/bin/gfortran "
 echo "--> Compiler setup: $CONFIGURE_ARGS"
 
 #
