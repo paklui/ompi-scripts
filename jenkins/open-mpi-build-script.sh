@@ -171,7 +171,7 @@ else
 	echo "--> Being a coward and not running with special autogen arguments and autogen.sh"
 	exit 1
     else
-	echo "--> running ./atogen.sh"
+	echo "--> running ./autogen.sh"
 	./autogen.sh
     fi
 fi
