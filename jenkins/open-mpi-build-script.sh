@@ -158,7 +158,7 @@ fi
 #
 # Build.
 #
-cd "${WORKSPACE}/src"
+cd "${WORKSPACE}"
 
 sha1=`git rev-parse HEAD`
 echo "--> Building commit ${sha1}"
@@ -216,7 +216,7 @@ echo "--> running ompi_info"
 ompi_info
 
 echo "--> running make all in examples"
-cd "${WORKSPACE}/src/examples"
+cd "${WORKSPACE}/examples"
 make ${MAKE_ARGS} all
 cd ..
 
